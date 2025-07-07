@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+
+  <style>
+    .fade-in {
+      animation: fadeIn 0.211s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include("home.ejs")%>
+
+  <div class="container mt-5">
+    <div class="card shadow-lg">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Add Product</h4>
+      </div>
+      <div class="card-body">
+        <form name="frm" action="/saveData" method="post">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="productName" class="form-label">Product Name</label>
+              <input type="text" class="form-control" name="pname" id="productName" placeholder="Enter product name">
+            </div>
+
+            <div class="col-md-6">
+              <label for="Category" class="form-label">Category</label>
+              <input type="text" class="form-control" name="Category" id="Category" placeholder="Enter Category">
+            </div>
+
+            <div class="col-md-6">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Enter price">
+            </div>
+
+            <div class="col-md-6">
+              <label for="quantity" class="form-label">Quantity</label> 
+              <input type="number" class="form-control" id="quantity" name="qty" placeholder="Enter quantity">
+            </div>
+          </div>
+
+          <div class="mt-4 text-end">
+            <button type="submit" name="s" class="btn btn-success">Add Product</button>
+          </div>
+
+          <!-- ✅ Animated success message -->
+          <% if (msg && msg !== "") { %>
+            <div class="alert alert-success mt-4 fade-in" role="alert">
+              <%= msg %>
+            </div>
+          <% } %>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+</html>
